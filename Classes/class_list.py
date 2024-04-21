@@ -10,6 +10,9 @@ user_1 = Person("Diego", 32)
 user_2 = Person("Cara" ,27)
 user_3 = Person("Victor", 57)
 
+users =[user_1, user_2, user_3]
 
-greeting_method = user_3.greet  # No () at the end
-print(greeting_method)  # Prints the method object
+for user in users: 
+    print(user.name)
+    print(user.age)
+    print(user.greet())
