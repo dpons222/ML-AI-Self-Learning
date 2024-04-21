@@ -12,8 +12,10 @@ class Person:
 # Create Person objects and store them in the contacts dictionary
 contacts = {}
 
-contacts["Victor"] = Person("Victor", "Cortes" 57, "7874221994", "vcortes@gmail.com")
-contacts["Cara"] = Person("Cara", "Bustin" 27, "123456789", "caras@email.com")
+contacts["Victor"] = Person("Victor", "Cortes", "57", "7872402276", "vcortes@gmail.com")
+contacts["Cara"] = Person("Cara", "Bustin", "27", "123456789", "caras@email.com")
+contacts["Aracelis"] = Person("Aracelis", "Nieves", "69", "7872401750", "dr.nieves21@gmail.com" )
+contacts["Diego"] = Person("Diego", "Pons", "32", "7874221994", "dpons222@gmail.com")
 
 # Function to get contact information
 def get_contact_info(name):
@@ -27,6 +29,8 @@ contact_name = input("Enter name: ")
 if get_contact_info(contact_name):
     person = contacts[contact_name]
     print(f"Contact information for {contact_name}:")
+    print(f"First name: {person.first_name}")
+    print(f"Last name: {person.last_name}")
     print(f"Phone: {person.phone}")
     print(f"Email: {person.email}")
 else:
