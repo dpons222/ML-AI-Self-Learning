@@ -1,25 +1,30 @@
-#Add Task
-task_list = []
-def add_task(task) :
-    task_list.append(task)
+# Function to add a task to the to-do list
+def add_task(to_do_list, title, description, category):
+    task = (title, description, category)
+    to_do_list.append(task)
+    print("Task added successfully.")
 
-#Add Category
-category_list = []
-def add_category(category) : 
-    category_list.append(category)
+# Function to view tasks by category
+def view_tasks_by_category(to_do_list, category):
+    print(f"Tasks in category '{category}':")
+    for task in to_do_list:
+        if task[2] == category:
+            print(task[0])
 
-#View all Tasks
-def view_all_tasks() :
-    print(task_list)
+# Function to mark a task as completed
+def mark_task_as_completed(to_do_list, title):
+    for task in to_do_list:
+        if task[0] == title:
+            to_do_list.remove(task)
+            print("Task marked as completed.")
+            return
+    print("Task not found.")
 
-#View All Categories
-def view_all_categories() :
-    print(category_list)
-
-#View Tasks by Category
-def view_tasks_by_category() :
- 
-
-
-#Mark Task as Completed
-#Delete Task
+# Function to delete a task
+def delete_task(to_do_list, title):
+    for task in to_do_list:
+        if task[0] == title:
+            to_do_list.remove(task)
+            print("Task deleted.")
+            return
+    print("Task not found.")

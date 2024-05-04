@@ -1,4 +1,5 @@
-import modules_chatgpt
+from modules import *
+
 
 # Main program
 to_do_list = []
