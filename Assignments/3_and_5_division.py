@@ -7,7 +7,7 @@ for num in numbers :
     #iterating each number
     if num % 3 == 0 or num % 5 == 0:
         #keep a running sum
-        sum += num
+        sum +=  num
         #create empty list to later append 3 and 5
         divisor = []
         #append 3 to divisor list
