@@ -2,6 +2,11 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import ssl
 
+'''
+find span tags, find sum of the contents
+'''
+
+
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
