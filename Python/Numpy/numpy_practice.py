@@ -8,9 +8,10 @@ def NewLine():
 
 
 
-a = np.array([[1 , 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+data = np.array(([1,2],
+                 [3,4],
+                 [5,6]))
 
-five_up = (a > 5) | (a == 5)
 
-
-print(a[five_up])
+print(data.sum(axis=0))
+print(data.sum(axis=1))
