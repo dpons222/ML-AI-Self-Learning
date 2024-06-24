@@ -1,0 +1,17 @@
+Load Data
+        - df = pd.read_csv('sales_data.csv', header=1)
+
+
+Check the info with df.info() - This will show number of entries, columns, data types, and nulls
+
+
+Clean Data - remove nulls with 
+    print('\nCheck for null data')
+    print(df.isnull())
+    df.dropna(axis=1, how='all', inplace=True) #remove all columns if that column has all NaNs
+    print("\nData after dropping rows with null values:")
+    print(df.head(3))
+
+    - check data types one more time just in case
+        print(df.dtypes)
+

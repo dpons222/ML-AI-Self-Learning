@@ -1,11 +1,12 @@
 import pandas as pd
+import numpy as np
 
 
-data = {
-    'Name': ['Alice', 'Bob', 'Charlie'],
-    'Age': [25, 30, 35],
-    'City': ['New York', 'Los Angeles', 'Chicago']
-}
+index = pd.date_range("1/1/2000", periods=8)
 
-df = pd.DataFrame(data)
+s = pd.Series(np.random.randn(5), index=["a", "b", "c", "d", "e"])
+
+df = pd.DataFrame(np.random.randn(8, 3), index=index, columns=["A", "B", "C"])
+
 print(df)
+print(df[:2])
