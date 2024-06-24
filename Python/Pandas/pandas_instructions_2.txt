@@ -1,0 +1,67 @@
+Additional Pandas Skills
+Data Cleaning and Preparation:
+
+Learn more about handling missing data (e.g., fillna, interpolate).
+Practice data transformation techniques (e.g., applying functions with apply, map).
+Merging and Joining DataFrames:
+
+Understand different types of joins (e.g., inner, outer, left, right) using merge and join.
+Pivot Tables and GroupBy:
+
+Explore pivot tables for summarizing data.
+Practice using groupby for aggregations and transformations.
+Advanced Indexing:
+
+Learn about multi-level indexing (hierarchical indexing) and how to manipulate it.
+Time Series Analysis:
+
+Work with time series data (e.g., resampling, rolling window calculations).
+Efficient Data Processing:
+
+Explore vectorized operations and avoid using loops where possible for performance optimization.
+
+________________________________________________
+
+Task 1: Data Cleaning and Preparation
+Handling missing data:
+
+Check for missing values and fill them using fillna or interpolate if necessary.
+Drop rows with missing data if appropriate.
+Data transformation:
+
+Apply a function to a column using apply.
+Use map to transform values in a column.
+
+
+Task 2: Merging and Joining DataFrames
+Types of joins:
+
+Perform different types of joins (inner, outer, left, right) between two DataFrames using merge or join.
+
+
+Task 3: Pivot Tables and GroupBy
+Pivot tables:
+
+Create a pivot table to summarize the data.
+GroupBy:
+
+Use groupby to perform aggregations (e.g., sum, mean) and transformations on the data.
+
+
+Task 4: Advanced Indexing
+Multi-level indexing:
+
+Create a DataFrame with multi-level indexing and manipulate it.
+
+
+Task 5: Time Series Analysis
+Time series operations:
+
+Resample the data to a different frequency.
+Perform rolling window calculations (e.g., rolling mean) on a time series.
+
+
+Task 6: Efficient Data Processing
+Vectorized operations:
+
+Replace iterative operations with vectorized operations for improved performance.

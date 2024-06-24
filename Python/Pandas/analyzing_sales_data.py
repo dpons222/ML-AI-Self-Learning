@@ -1,9 +1,15 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
+
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, 'sales_data_3.csv')
+
 
 #load the data
-df = pd.read_csv('sales_data_3.csv', header=0)
+df = pd.read_csv(file_path, header=0)
 print(df.info())
 print('\nOriginal Data: ')
 print(df.head(3))

@@ -1,0 +1,73 @@
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, 'sales_data_3.csv')
+
+#read data / check info
+df = pd.read_csv(file_path, header=0)
+print("\n Data info: ")
+df.info()
+print('\nData head: ')
+print(df.head(3))
+print('\nCheck for null data: ')
+print(df.isnull().sum())
+
+#clean data - convert date to datetime; remove nulls
+df['Date'] = pd.to_datetime(df['Date'])
+df.dropna(axis=1, how='all', inplace=True)
+print('\nDF after nulls removed and DateToTime: ')
+print(df)
+print('\nDF Info: ')
+df.info()
+
+#find total sales dollars and add column
+total_sales = df['Quantity'] * df['Price']
+df['Total Sales'] = total_sales
+print('\nCheck total sales column: ')
+print(df.head())
+
+#find number of sales per product
+sales_number_per_product = df.groupby('Product')['Quantity'].sum()
+print('\nSales number per product: ')
+print(sales_number_per_product)
+
+#find sales dollars per product
+sales_dollars_per_product = df.groupby('Product')['Price'].sum()
+print('\nSales dollars per product: ')
+print(sales_dollars_per_product)
+
+#find average per transaction
+avg_per_transaction = df.groupby('Store')['Price'].mean()
+print('\nAverage price per transaction: ')
+print(avg_per_transaction)
+
+#All data
+df
+sales_dollars_per_product
+sales_number_per_product
+avg_per_transaction
+
+
+
+
+
+
+# Plot total quantity sold per product
+sales_number_per_product.plot(kind='bar', title='Total Quantity Sold Per Product')
+plt.ylabel('Total Quantity')
+plt.xlabel('Product')
+plt.show()
+
+# Plot total sales dollars per product
+sales_dollars_per_product.plot(kind='bar', title='Total Sales Dollars Per Product')
+plt.ylabel('Total Sales Dollars')
+plt.xlabel('Product')
+plt.show()
+
+# Plot average sales per transaction for each store
+avg_per_transaction.plot(kind='bar', title='Average Sales Per Transaction For Each Store')
+plt.ylabel('Average Sales ($)')
+plt.xlabel('Store')
+plt.show()
