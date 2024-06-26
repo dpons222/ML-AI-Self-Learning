@@ -1,4 +1,12 @@
 import numpy as np
+import sys
+import os
+
+# Add the directory containing numpy_formulas.py to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Numpy'))
+import numpy_formulas as nf
+
+
 
 # Sample data
 quantities = np.array([10, 5, 7, 8, 9, 3, 6, 11, 15, 8])
@@ -7,7 +15,7 @@ discounts = np.array([2, 1, 0, 2, 3, 5, 1, 0, 2, 1])
 
 
 #reshape to 2 by 5 
-quantities_reshaped = quantities.reshape(2,5)
+quantities_reshaped = nf.reshape_data(quantities,(2,5))
 prices_reshaped = prices.reshape(2,5)
 discounts_reshaped = discounts.reshape(2,5)
 print('\nData reshaped to 2 by 5: ')
@@ -54,3 +62,8 @@ print('\nPrices mean: ')
 print(prices_mean)
 print('\nDot product prices and quantities: ')
 print(dot_product_quantities_prices)
+
+#extract first 5 entries of quantities array
+
+quantities_reshaped_plus_5_doubled = 2 * quantities_reshaped_plus_5[0].copy()
+print(quantities_reshaped_plus_5_doubled)
