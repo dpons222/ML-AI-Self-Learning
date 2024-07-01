@@ -10,13 +10,15 @@ file_path = os.path.join(script_dir, 'sales_data_3.csv')
 
 #load the data
 df = pd.read_csv(file_path, header=0)
-print(df.info())
-print('\nOriginal Data: ')
+print('\nDataframe info: \n', df.info())
+print('\nOriginal Data Head: ')
 print(df.head(3))
+print('\n Dataframe shape: \n', df.shape)
+print('\nDataframe describe: \n', df.describe())
 
 #clean the data / check nulls
-print('\nCheck for null data')
-print(df.isnull())
+print('\nCheck for null data: ')
+print(df.isnull().sum())
 df.dropna(axis=1, how='all', inplace=True)
 print("\nData after dropping rows with null values:")
 print(df.head(3))
