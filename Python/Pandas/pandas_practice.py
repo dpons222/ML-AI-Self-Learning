@@ -1,60 +1,48 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+import os
 
-# Load the Titanic dataset
-titanic = pd.read_csv('https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv')
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, 'mayor.csv')
 
-# Load / Inspect Data
+print('Dataframe Read: \n')
+df = pd.read_csv(file_path)
 
-print(titanic.head())
-# Check the shape of the dataset
-print(titanic.shape)
+print(f'''
 
-# Get a summary of the dataset
-print(titanic.info())
+Dataframe Info:
+{df.info()}
 
-# Get basic statistical details
-print(titanic.describe())
+Dataframe Head: 
+{df.head()}
 
-# Check for missing values
-print(titanic.isnull().sum())
+Dataframe Describe:
+{df.describe()}
 
-
-
-# Fill missing values in the 'Age' column with the mean age
-titanic['Age'].fillna(titanic['Age'].mean(), inplace=True)
-
-# Drop rows with missing values in the 'Embarked' column
-titanic.dropna(subset=['Embarked'], inplace=True)
-print('\n Data after dropping nulls: \n',titanic.head())
+Dataframe IsNull: 
+{df.isnull().sum()}
+''')
 
 
+job_freq = df['title'].value_counts()
+job_percent_of_total = job_freq / df['title'].value_counts().sum() *100
 
-import matplotlib.pyplot as plt
-import seaborn as sns
+job_title_categories = pd.DataFrame(
+    {'Frequency' : job_freq,
+     'Percentage' : job_percent_of_total}
+)
 
-# Plot the distribution of ages
-plt.hist(titanic['Age'], bins=30)
-plt.xlabel('Age')
-plt.ylabel('Frequency')
-plt.title('Age Distribution')
-plt.show()
+# Format the Percentage column with a percent sign
+job_title_categories['Percentage'] = job_title_categories['Percentage'].apply(lambda x: f'{int(x)}%')
 
-# Plot a bar chart of survival counts
-sns.countplot(x='Survived', data=titanic)
-plt.title('Survival Counts')
-plt.show()
+print(f'''
+Job Title Categories:
+       
+{job_title_categories}''')
 
-# Plot a box plot of age by class
-sns.boxplot(x='Pclass', y='Age', data=titanic)
-plt.title('Age by Class')
-plt.show()
+print(f'''
+Mean age:
+{df['age'].mean()}      
 
-# Plot a heatmap of the correlation matrix
-sns.heatmap(titanic.corr(), annot=True, cmap='coolwarm')
-plt.title('Correlation Matrix')
-plt.show()
-
+Std Dev:
+{df['age'].std()}''')
 
