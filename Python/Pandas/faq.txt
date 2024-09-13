@@ -1,0 +1,5 @@
+convert pythong script to jupyter notebook
+    jupytext --to notebook script.py
+
+
+    
