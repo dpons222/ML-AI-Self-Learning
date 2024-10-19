@@ -1,4 +1,4 @@
-convert pythong script to jupyter notebook
+convert python script to jupyter notebook
     jupytext --to notebook script.py
 
 
