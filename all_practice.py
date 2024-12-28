@@ -2,6 +2,10 @@ import numpy as np
 import pandas as pd
 import scipy.stats as stats
 
-array = np.array(range(1, 11))
-sample = np.random.choice(array, (10), replace = False,)
-print(sample)
+results = 0
+for i in range(0, 5):
+    results += ((-1)**i) / (1+i)
+    print(f'iteration {i}: {results}')
+print(f'total results: {results}')  
+
+print(47/60)
