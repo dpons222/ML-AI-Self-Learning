@@ -27,4 +27,4 @@ def math_format(x):
     return re.sub(r'\\\(\s*(.*?)\s*\\\)', r'$ \1 $', x)
 
 # Example usage
-split_markdown_cells('/Users/diegopons/Documents/Coding/Chat-GPT-Learning/Machine Learning/machine_learning.ipynb', '/Users/diegopons/Documents/Coding/Chat-GPT-Learning/Machine Learning/NEW_machine_learning.ipynb')
+#split_markdown_cells('/Users/diegopons/Documents/Coding/Chat-GPT-Learning/Machine Learning/machine_learning.ipynb', '/Users/diegopons/Documents/Coding/Chat-GPT-Learning/Machine Learning/NEW_machine_learning.ipynb')

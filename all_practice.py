@@ -3,22 +3,17 @@ import pandas as pd
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 
-from sklearn.linear_model import LinearRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
-# Sample data
-X = [1], [2], [3], [4], [5]  # Predictor variable
-y = [1,5,10,15,20]            # Response variable
+TP = 23
+TN = 36
+FP = 5
+FN = 4
 
-# Create and fit the model
-model = LinearRegression()
-model.fit(X, y)
+accuracy = (TP + TN) / (TP + TN + FP + FN)
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)
 
-# Get the coefficient and intercept
-coef = model.coef_
-intercept = model.intercept_
-
-print(f"Coefficient: {coef}")
-print(f"Intercept: {intercept}")
-
-plt.scatter(model.predict(X), y)
-plt.show()
+print('Accuracy: ', accuracy)
+print('Precision: ', precision)   
+print('Recall: ', recall)
