@@ -57,8 +57,8 @@ def split_markdown_cells(notebook_path, output_path, start_header=None, stop_hea
 # #Template
 # notebook_path = 'Machine Learning/machine_learning.ipynb'
 # output_path = 'Machine Learning/machine_learning_2.ipynb'
-# start_header = '# Recommender Systems'
-# stop_header = None
+# start_header = '## Introduction to Machine Learning'
+# stop_header = '# EDA Before Regression Model'
 
 # split_markdown_cells(notebook_path, output_path, start_header=None, stop_header=None)
 
@@ -123,13 +123,13 @@ def modify_headers_in_section(notebook_path, output_path, start_heading, end_hea
         print(f"An error occurred while writing the notebook: {e}")
 
 # Template:
-# notebook_path = 'your_notebook.ipynb' 
-# output_path = 'modified_notebook.ipynb'
-# start_heading = '## Introduction'
-# end_heading = '## Conclusion'
-# add_or_subtract = 
+notebook_path = 'Machine Learning/machine_learning_2.ipynb'
+output_path = 'Machine Learning/machine_learning.ipynb'
+start_heading = '## Introduction to Machine Learning'
+end_heading = '# EDA Before Regression Model'
+add_or_subtract = '-'
 
-# modify_headers_in_section(notebook_path, output_path, start_heading, end_heading, add_or_subtract)
+modify_headers_in_section(notebook_path, output_path, start_heading, end_heading, add_or_subtract)
 
 ##############################################################################################################################################################################
 
