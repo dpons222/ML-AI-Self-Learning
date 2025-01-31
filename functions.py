@@ -55,17 +55,16 @@ def split_markdown_cells(notebook_path, output_path, start_header=None, stop_hea
         nbformat.write(nb, f)
 
 # #Template
-# notebook_path = 'Machine Learning/machine_learning.ipynb'
-# output_path = 'Machine Learning/machine_learning_2.ipynb'
-# start_header = '## Introduction to Machine Learning'
-# stop_header = '# EDA Before Regression Model'
+notebook_path = 'Machine Learning/machine_learning.ipynb'
+output_path = 'Machine Learning/machine_learning_2.ipynb'
+start_header = '## Naive Bayes Classifier'
+stop_header = '# END'
 
-# split_markdown_cells(notebook_path, output_path, start_header=None, stop_header=None)
+split_markdown_cells(notebook_path, output_path, start_header=None, stop_header=None)
 
 ##############################################################################################################################################################################
 
-
-def modify_headers_in_section(notebook_path, output_path, start_heading, end_heading, add_or_subtract):
+def modify_headers_in_section(notebook_path, output_path, add_or_subtract, start_heading=None, end_heading=None):
     """
     Modifies headers within a specific section of a Jupyter Notebook.
     Allows the user to specify a start and stop header, and whether to add or subtract '#' symbols.
@@ -73,9 +72,9 @@ def modify_headers_in_section(notebook_path, output_path, start_heading, end_hea
     Args:
         notebook_path (str): Path to the input Jupyter Notebook.
         output_path (str): Path to save the modified notebook.
-        start_heading (str): The header text to start modifying from (inclusive).
-        end_heading (str): The header text to stop modifying at (exclusive).
         add_or_subtract (str): '+' to add '#' symbols, '-' to subtract '#' symbols.
+        start_heading (str, optional): The header text to start modifying from (inclusive). Defaults to None.
+        end_heading (str, optional): The header text to stop modifying at (exclusive). Defaults to None.
     """
 
     if add_or_subtract not in ['+', '-']:
@@ -93,12 +92,16 @@ def modify_headers_in_section(notebook_path, output_path, start_heading, end_hea
         return
 
     modify = False
+    if start_heading is None:
+        modify = True
+
     for cell in nb.cells:
         if cell.cell_type == 'markdown':
             lines = cell.source.split('\n')
-            if any(start_heading in line for line in lines):  # Start modifying
+
+            if start_heading is not None and any(start_heading in line for line in lines):
                 modify = True
-            if any(end_heading in line for line in lines):  # Stop modifying
+            if end_heading is not None and any(end_heading in line for line in lines):
                 modify = False
 
             if modify:
@@ -123,13 +126,13 @@ def modify_headers_in_section(notebook_path, output_path, start_heading, end_hea
         print(f"An error occurred while writing the notebook: {e}")
 
 # Template:
-notebook_path = 'Machine Learning/machine_learning_2.ipynb'
-output_path = 'Machine Learning/machine_learning.ipynb'
-start_heading = '## Introduction to Machine Learning'
-end_heading = '# EDA Before Regression Model'
-add_or_subtract = '-'
+# notebook_path = 'Machine Learning/machine_learning.ipynb'
+# output_path = 'Machine Learning/machine_learning_2.ipynb'
+# add_or_subtract = '+'
+# start_heading = '# Recommender Systems'
+# end_heading = None
 
-modify_headers_in_section(notebook_path, output_path, start_heading, end_heading, add_or_subtract)
+# modify_headers_in_section(notebook_path, output_path, add_or_subtract, start_heading, end_heading)
 
 ##############################################################################################################################################################################
 
