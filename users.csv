@@ -1,3 +1,4 @@
-Name,Username,Email
-Roger Smith, rsmith, wigginsryan@yahoo.com
-Michelle Beck, mlbeck, hcosta@hotmail.com
+Name,Username,Email,Age,Country
+Roger Smith, rsmith, wigginsryan@yahoo.com,10,usa
+Michelle Beck, mlbeck, hcosta@hotmail.com,20,canada
+Diego Pons, dpons, dpons222@gmail.com, 33,pr
