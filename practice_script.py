@@ -1,6 +1,10 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+
+import unittest
+
+
 # import tensorflow as tf
 # import matplotlib.pyplot as plt
 # import random
@@ -14,6 +18,17 @@ import seaborn as sns
 # # from sklearn.datasets import make_classification
 
 
+# Function that gets tested
+def times_ten(number):
+    return number * 10
 
-df = pd.read_csv('users.csv')
-df
+# Test class
+class TestTimesTen(unittest.TestCase):
+    def test_times_ten(self):
+        for num in [0, 1000000, -100]:
+            with self.subTest():
+                expected_result = num * 10
+                message = 'Expected times_ten(' + str(num) + ') to return ' + str(expected_result)
+                self.assertEqual(times_ten(num), expected_result, message)
+
+unittest.main()

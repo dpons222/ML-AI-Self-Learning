@@ -56,11 +56,11 @@ def split_markdown_cells(notebook_path, output_path, start_header=None, stop_hea
 
 # #Template
 notebook_path = 'Machine Learning/machine_learning.ipynb'
-output_path = 'Machine Learning/machine_learning_2.ipynb'
-start_header = '## Naive Bayes Classifier'
+output_path = 'Machine Learning/machine_learning.ipynb'
+start_header = '## Machine Learning Workflow'
 stop_header = '# END'
 
-split_markdown_cells(notebook_path, output_path, start_header=None, stop_header=None)
+split_markdown_cells(notebook_path, output_path, start_header=start_header, stop_header=stop_header)
 
 ##############################################################################################################################################################################
 
