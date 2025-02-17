@@ -1,5 +1,7 @@
 import nbformat
 import regex as re
+import json
+import argparse
 
 # --- Notebook Manipulation Functions ---
 
@@ -54,13 +56,13 @@ def split_markdown_cells(notebook_path, output_path, start_header=None, stop_hea
     with open(output_path, 'w', encoding='utf-8') as f:
         nbformat.write(nb, f)
 
-# #Template
-notebook_path = 'Machine Learning/machine_learning.ipynb'
-output_path = 'Machine Learning/machine_learning.ipynb'
-start_header = '## Machine Learning Workflow'
-stop_header = '# END'
+# # #Template
+# notebook_path = 'Machine Learning/machine_learning.ipynb'
+# output_path = 'Machine Learning/machine_learning.ipynb'
+# start_header = '## Machine Learning Workflow'
+# stop_header = '# END'
 
-split_markdown_cells(notebook_path, output_path, start_header=start_header, stop_header=stop_header)
+# split_markdown_cells(notebook_path, output_path, start_header=start_header, stop_header=stop_header)
 
 ##############################################################################################################################################################################
 
@@ -133,6 +135,33 @@ def modify_headers_in_section(notebook_path, output_path, add_or_subtract, start
 # end_heading = None
 
 # modify_headers_in_section(notebook_path, output_path, add_or_subtract, start_heading, end_heading)
+
+##############################################################################################################################################################################
+
+def convert_ipynb_to_py(notebook_path, output_path):
+    """
+    Extracts code cells from a Jupyter Notebook (.ipynb) and saves them as a Python script (.py).
+    
+    Parameters:
+        notebook_path (str): Path to the input .ipynb file.
+        output_path (str): Path to save the extracted .py file.
+    """
+    with open(notebook_path, 'r', encoding='utf-8') as f:
+        notebook = json.load(f)
+    
+    code_cells = [
+        "\n".join(cell["source"]) for cell in notebook.get("cells", []) if cell.get("cell_type") == "code"
+    ]
+
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write("\n\n".join(code_cells))
+
+    print(f"Converted {notebook_path} to {output_path}")
+
+# # Template
+# notebook_path = 'practice_notebook.ipynb'   
+# output_path = 'new_script.py' 
+# convert_ipynb_to_py(notebook_path, output_path)
 
 ##############################################################################################################################################################################
 
