@@ -2,6 +2,8 @@ import nbformat
 import regex as re
 import json
 import argparse
+import pandas as pd
+from scipy.stats import pearsonr
 
 # --- Notebook Manipulation Functions ---
 
@@ -170,3 +172,32 @@ def convert_ipynb_to_py(notebook_path, output_path):
 def math_format(x):
     return re.sub(r'\\\(\s*(.*?)\s*\\\)', r'$ \1 $', x)
 ##############################################################################################################################################################################
+
+# --- Stats Functions ---
+
+# Function to compute correlation and p-value
+def corr_with_pvalues(df):
+    cols = df.columns
+    pvals = pd.DataFrame(index=cols, columns=cols)
+    corrs = pd.DataFrame(index=cols, columns=cols)
+    
+    for col1 in cols:
+        for col2 in cols:
+            if col1 == col2:
+                corrs.loc[col1, col2] = 1.0
+                pvals.loc[col1, col2] = 0.0
+            else:
+                r, p = pearsonr(df[col1], df[col2])
+                corrs.loc[col1, col2] = r
+                pvals.loc[col1, col2] = p
+                
+    return corrs.astype(float), pvals.astype(float)
+
+# # Template
+# # Get both correlation matrix and p-values
+# corr_matrix, p_value_matrix = corr_with_pvalues(df)
+
+# print("Correlation matrix:")
+# print(corr_matrix)
+# print("\nP-value matrix:")
+# print(p_value_matrix)
