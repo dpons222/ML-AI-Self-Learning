@@ -1,5 +1,0 @@
-convert python script to jupyter notebook
-    jupytext --to notebook script.py
-
-
-    
